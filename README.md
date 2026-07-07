@@ -37,13 +37,13 @@ Everything is implemented in **C++/Arduino** for the low-level servo control and
 
 1. [Project Motivation](#1-project-motivation)
 2. [System Architecture](#2-system-architecture)
-3. [Exercise 1: Delta Robot Assembly](#3-exercise-1-delta-robot-assembly)
-4. [Exercise 2: Arduino Programming](#4-exercise-2-arduino-programming)
-5. [Exercise 3: ROS Visualization](#5-exercise-3-ros-visualization)
-6. [Exercise 4: Direct Kinematics](#6-exercise-4-direct-kinematics)
-7. [Exercise 5: Inverse Kinematics](#7-exercise-5-inverse-kinematics)
-8. [Exercise 6: Trajectory Action Server](#8-exercise-6-trajectory-action-server)
-9. [Exercise 7: Connecting to the Real Delta](#9-exercise-7-connecting-to-the-real-delta)
+3. [Delta Robot Assembly](#3-exercise-1-delta-robot-assembly)
+4. [Arduino Programming](#4-exercise-2-arduino-programming)
+5. [ROS Visualization](#5-exercise-3-ros-visualization)
+6. [Direct Kinematics](#6-exercise-4-direct-kinematics)
+7. [Inverse Kinematics](#7-exercise-5-inverse-kinematics)
+8. [Trajectory Action Server](#8-exercise-6-trajectory-action-server)
+9. [Connecting to the Real Delta](#9-exercise-7-connecting-to-the-real-delta)
 10. [Repository Structure](#10-repository-structure)
 11. [Installation](#11-installation)
 12. [Results & Conclusions](#12-results--conclusions)
@@ -91,7 +91,7 @@ This project walks through all of the above, starting from a soldering iron and 
 
 ---
 
-## 3. Exercise 1: Delta Robot Assembly
+## 3. Delta Robot Assembly
 
 <p align="center">
   <img src="docs/images/wiring_diagram.jpg" alt="Servo wiring diagram" width="420">
@@ -111,7 +111,7 @@ This project walks through all of the above, starting from a soldering iron and 
 
 ---
 
-## 4. Exercise 2: Arduino Programming
+## 4. Arduino Programming
 
 **Goal:** convert a target end-effector position into smooth servo motion, entirely on the Arduino.
 
@@ -145,7 +145,7 @@ void speed_smoother(
 
 ---
 
-## 5. Exercise 3: ROS Visualization
+## 5. ROS Visualization
 
 **Goal:** first contact with ROS2 packages, nodes, and seeing the robot rendered for the first time.
 
@@ -164,7 +164,7 @@ joint_state_publisher_gui  ──▶  robot_state_publisher  ──▶  rviz2
 
 ---
 
-## 6. Exercise 4: Direct Kinematics
+## 6. Direct Kinematics
 
 **Goal:** write a custom joint-state publisher so the delta robot assembles correctly in RViz.
 
@@ -183,7 +183,7 @@ joint_state_publisher_gui  ──▶  robot_state_publisher  ──▶  rviz2
 
 ---
 
-## 7. Exercise 5: Inverse Kinematics
+## 7. Inverse Kinematics
 
 **Goal:** close the loop with a ROS2 service that turns a target position into joint angles.
 
@@ -200,6 +200,12 @@ Request: x, y, z  ──▶  ikin_server  ──▶  Response: phi_11, phi_12, p
 | **3. Testing with RQT** | Used the RQT Service Caller panel to call `/ikin` with a target `(x, y, z)` and watched the robot jump to pose in RViz. |
 
 > **NaN guard:** only real numbers reach the Arduino — if `inverse_kinematics()` returns NaN for an unreachable position, the request is ignored.
+
+### Delta robot assemblied in RViz simulation
+
+<p align="center">
+  <img width="1452" height="516" alt="Screenshot 2026-07-02 233017" src="https://github.com/user-attachments/assets/602ea4e1-449d-4d54-b924-0d6152a117cf" />
+4812-a5db-cebb0d59cd31" />
 
 ---
 
@@ -218,6 +224,12 @@ Goal: x, y, z  ──▶  Waypoint loop (ikin_server call, 1Hz feedback)  ──
 | **3. Execution loop** | Per waypoint: check for cancellation → call `ikin_server` → publish feedback at 1Hz → abort on invalid response → succeed after the last waypoint. |
 
 > **Dynamic linking:** no `main()` — `RCLCPP_COMPONENTS_REGISTER_NODE(TrajectoryPlanServer)` instantiates and spins the class automatically.
+
+### Trajectory action server launch
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/ffeeeca3-82e9-45e5-915f-07dea4784176" width="600" controls muted autoplay loop></video>
+</p>
 
 ---
 
