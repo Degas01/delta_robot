@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>delta_robot_description</name>
+  <version>0.0.1</version>
+  <description>URDF, meshes and RViz launch files for the delta robot (Exercise 3)</description>
+  <maintainer email="you@example.com">Giacomo Demetrio Masone</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

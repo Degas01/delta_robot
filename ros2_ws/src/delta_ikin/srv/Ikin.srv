@@ -1,0 +1,11 @@
+# Ikin.srv
+# Exercise 5: request is a target effector position, response is the
+# three joint angles (in degrees).
+
+float64 x
+float64 y
+float64 z
+---
+float64 phi_11
+float64 phi_12
+float64 phi_13
