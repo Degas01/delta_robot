@@ -288,8 +288,8 @@ delta_robot_summer_school/
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/delta_robot_summer_school.git
-cd delta_robot_summer_school
+git clone https://github.com/Degas01/delta_robot.git
+cd delta_robot
 ```
 
 ### Step 2: Flash the Arduino
