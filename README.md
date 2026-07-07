@@ -1,7 +1,7 @@
 # Delta Robot Assembly and Control using ROS2
 
 <p align="center">
-  <img src="docs/images/delta_robot_hero.png" alt="Delta robot" width="700">
+  <img width="3060" height="4080" alt="20260703_095019" src="https://github.com/user-attachments/assets/6b1fdf67-7321-46f9-adca-20d23109a9e9" />
 </p>
 
 <p align="center">
